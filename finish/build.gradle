@@ -1,8 +1,52 @@
+buildscript {
+  repositories {
+        mavenCentral()
+        mavenLocal()
+  }
+  dependencies {
+    classpath("io.openliberty.tools:liberty-gradle-plugin:3.5.3-SNAPSHOT")
+  }
+}
+
+apply plugin: 'liberty'
+
+/*
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+    dependencies {
+        classpath ('io.openliberty.tools:liberty-ant-tasks:1.9.9')
+        classpath ('io.openliberty.tools:ci.common:1.8.23')
+    }
+}
+*/
+/*
+plugins {
+  id("io.openliberty.tools.gradle.Liberty") version "3.5.3-SNAPSHOT"
+}
+*/
+
+
+
+/*
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+    dependencies {
+        classpath 'io.openliberty.tools:liberty-gradle-plugin:3.5.3-SNAPSHOT'
+    }
+}
+apply plugin: 'liberty'
+*/
+
 // tag::war[]
 apply plugin: 'war'
 // end::war[]
 // tag::liberty[]
-apply plugin: 'liberty'
 // end::liberty[]
 
 sourceCompatibility = 1.8
@@ -11,25 +55,11 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-// configure liberty-gradle-plugin 
-// tag::buildscript[]
-buildscript {
-    repositories {
-        // tag::buildmaven[]
-        mavenCentral()
-        // end::buildmaven[]
-    }
-    dependencies {
-        // tag::liberty-dependency[]
-        classpath 'io.openliberty.tools:liberty-gradle-plugin:3.3.1'
-        // end::liberty-dependency[]
-    }
-}
-// end::buildscript[]
 
 // tag::repositories[]
 repositories {
     // tag::maven[]
+        mavenLocal()
     mavenCentral()
     // end::maven[]
 }
